@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دڵسۆز — پەرستاری</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@500;700&family=Noto+Sans+Arabic:wght@400;600&display=swap">
+<style>
+:root{--bg1:#dff4ef;--bg2:#a9ddd5;--bg3:#f9cfc9;--ink:#06302f;--muted:#2e5f5c;--accent:#d8473f;--on:#fff;--glass:rgba(255,255,255,.55);--card2:rgba(255,255,255,.84);--gb:rgba(6,48,47,.14);--pill:rgba(255,255,255,.72);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#03201f;--bg2:#0c6461;--bg3:#0a3d3b;--ink:#fff1ea;--muted:#b9d9d4;--accent:#ff9d94;--on:#2a0d0b;--glass:rgba(255,255,255,.07);--card2:rgba(8,50,48,.8);--gb:rgba(255,255,255,.18);--pill:rgba(5,30,30,.55)}}
+:root[data-theme="dark"]{--bg1:#03201f;--bg2:#0c6461;--bg3:#0a3d3b;--ink:#fff1ea;--muted:#b9d9d4;--accent:#ff9d94;--on:#2a0d0b;--glass:rgba(255,255,255,.07);--card2:rgba(8,50,48,.8);--gb:rgba(255,255,255,.18);--pill:rgba(5,30,30,.55)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg1);color:var(--ink);font-family:'Noto Sans Arabic',Tahoma,'Segoe UI',system-ui,sans-serif;line-height:1.9;overflow-x:clip}
+.sea{position:fixed;inset:0;z-index:-1;overflow:hidden;background:radial-gradient(60% 50% at 70% 20%,var(--bg2),transparent 70%),radial-gradient(50% 50% at 15% 85%,var(--bg3),transparent 70%),var(--bg1)}
+.sea::after{content:"";position:absolute;width:60vmax;height:60vmax;left:-10vmax;top:10vh;border-radius:50%;background:radial-gradient(circle,rgba(255,157,148,.2),transparent 65%);animation:drift 18s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(55vw,-12vh) scale(1.15)}}
+#gl{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.track{height:1010vh}
+.stage{position:fixed;inset:0;z-index:1;pointer-events:none}
+.scene{position:absolute;inset:0;display:flex;align-items:center;padding:calc(90px + env(safe-area-inset-top,0px)) 7vw calc(80px + env(safe-area-inset-bottom,0px));perspective:1400px}
+.scene.alt{justify-content:flex-end}
+.scene.mid{flex-direction:column;align-items:center;justify-content:flex-start;text-align:center}
+.scene.end{justify-content:center;align-items:flex-end;text-align:center}
+.card{pointer-events:auto;max-width:min(540px,46vw);padding:clamp(22px,3vw,38px);border-radius:28px;background:var(--glass);border:1px solid var(--gb);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);opacity:0;visibility:hidden;will-change:transform,opacity}
+.mid .card{max-width:520px;padding:14px 28px}
+nav{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);left:50%;transform:translateX(-50%);z-index:5;display:flex;gap:2px;padding:6px;border-radius:999px;background:var(--pill);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--gb);max-width:calc(100% - 24px)}
+nav button{font:inherit;font-size:13px;color:var(--ink);background:none;border:0;cursor:pointer;padding:6px 14px;border-radius:999px;white-space:nowrap}
+nav button.on{background:var(--accent);color:var(--on)}
+.logo{position:fixed;z-index:5;top:calc(env(safe-area-inset-top,0px) + 14px);inset-inline-start:5vw;font-family:'Noto Naskh Arabic',Tahoma,serif;font-weight:700;font-size:22px;line-height:1.2}
+.logo small{display:block;font:400 11px 'Noto Sans Arabic',sans-serif;color:var(--muted)}
+.dots{position:fixed;z-index:5;top:50%;inset-inline-end:6px;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px}
+.dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:var(--ink);opacity:.3;cursor:pointer}
+.dots button.on{opacity:1;background:var(--accent);transform:scale(1.5)}
+.k{font-size:13px;color:var(--accent);font-weight:600;margin:0 0 6px}
+h1,h2{font-family:'Noto Naskh Arabic',Tahoma,serif;font-weight:700;line-height:1.45;margin:0 0 10px}
+h1{font-size:clamp(2.5rem,6.5vw,4.8rem)}
+h2{font-size:clamp(1.7rem,4vw,3rem)}
+.mid h2{margin:0;font-size:clamp(1.5rem,3.4vw,2.4rem)}
+em{font-style:normal;color:var(--accent)}
+p{margin:0 0 18px;color:var(--muted);font-size:1.02rem}
+.btn{border:0;cursor:pointer;font:600 15px 'Noto Sans Arabic',Tahoma,sans-serif;padding:12px 26px;border-radius:999px;background:var(--accent);color:var(--on);display:inline-block}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--gb)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.end .row{justify-content:center}
+.ring{position:absolute;left:50%;top:70%;width:0;height:0;transform-style:preserve-3d;--w:min(44vw,190px);--R:calc(var(--w) * 1.05)}
+.ring .chip{position:absolute;left:calc(var(--w) / -2);top:-28px;width:var(--w);height:56px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-size:.92rem;color:var(--ink);background:var(--card2);border:1px solid var(--gb);border-radius:16px;cursor:pointer;backface-visibility:hidden;-webkit-backface-visibility:hidden;opacity:0;pointer-events:auto;transform:rotateY(calc(var(--k) * 60deg)) translateZ(var(--R))}
+.ring .chip:hover{transform:rotateY(calc(var(--k) * 60deg)) translateZ(calc(var(--R) + 16px))}
+.chip b{color:var(--accent)}
+.card{perspective:900px}
+.card.sm{padding:clamp(18px,2.4vw,30px)}
+.sm h2{font-size:clamp(1.5rem,3.2vw,2.3rem)}
+.sm p:not(.k){font-size:.95rem;margin-bottom:8px}
+.it{opacity:0;transform:rotateX(75deg) translateZ(-140px);transform-origin:50% 100%;transition:all .7s cubic-bezier(.2,.7,.2,1) calc(var(--n) * .08s)}
+.act .it{opacity:1;transform:none}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0 4px}
+.tile{padding:8px 14px;border-radius:16px;border:1px solid var(--gb);background:var(--glass);line-height:1.6}
+.tile b{display:block;font:700 1.2rem 'Noto Naskh Arabic',Tahoma,serif;color:var(--accent)}
+.tile span{font-size:.8rem;color:var(--muted)}
+.steps{list-style:none;margin:12px 0 8px;padding:0;display:grid;gap:8px}
+.steps li{display:flex;gap:12px;align-items:center;padding:8px 12px;border-radius:14px;border:1px solid var(--gb);background:var(--glass);font-size:.93rem;line-height:1.7}
+.steps i{font:700 1rem 'Noto Naskh Arabic',Tahoma,serif;flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--on)}
+@media (max-width:720px){nav button{padding:6px 9px;font-size:12px}}
+.ecg{position:fixed;inset-inline:0;bottom:calc(env(safe-area-inset-bottom,0px) + 6px);height:44px;width:100%;pointer-events:none;z-index:2}
+.ecg path{fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.ecg .bg{opacity:.22}
+.ecg .fg{stroke-dasharray:160 840;animation:dash 3.2s linear infinite}
+@keyframes dash{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}
+@media (max-aspect-ratio:17/20),(max-width:720px){.scene,.scene.alt{align-items:flex-end;justify-content:center;padding:calc(84px + env(safe-area-inset-top,0px)) 14px calc(64px + env(safe-area-inset-bottom,0px))}.scene.mid{align-items:center;justify-content:flex-start}.card{max-width:560px;width:100%;box-sizing:border-box}.logo{display:none}}
+@media (prefers-reduced-motion:reduce){.sea::after,.ecg .fg{animation:none}}
+</style>
+</head>
+<body>
+<div class="sea"></div>
+<canvas id="gl"></canvas>
+<div class="logo">دڵسۆز<small>پەرستاری</small></div>
+<nav><button data-i="0">سەرەکی</button><button data-i="1">چاودێری</button><button data-i="2">شارەزایی</button><button data-i="3" data-e="6">زانیاری</button><button data-i="7">بەشداربە</button></nav>
+<div class="dots" id="dots"></div>
+
+<div class="stage">
+<div class="scene"><div class="card">
+<p class="k">پەرستاری — ئەزموونێکی سێ‌ڕەهەند</p>
+<h1>چاودێری<br>بە <em>دڵسۆزی</em></h1>
+<p>لە یەکەم پشکنینەوە تا ساڕێژبوون، پەرستار ئەو دەستەیە کە هەمیشە ئامادەیە. سکرۆڵ بکە — هەر بەشێک لە قووڵاییەوە دەردەکەوێت.</p>
+<button class="btn" data-i="1">دەستپێبکە ↓</button>
+</div></div>
+
+<div class="scene alt"><div class="card">
+<p class="k">٠١ — چاودێری</p>
+<h2>گوێ بگرە لە <em>لێدانی دڵ</em></h2>
+<p>هەموو نەخۆشێک چیرۆکێکی هەیە، و پەرستار یەکەم کەسە کە بە ئارامی گوێی لێ دەگرێت. ستێسکۆپ تەنها ئامێر نییە؛ نیشانەی متمانەیە.</p>
+</div></div>
+
+<div class="scene mid"><div class="card">
+<p class="k" style="margin:0">٠٢ — شارەزایی</p>
+<h2>هێز لە <em>وردەکاریدایە</em></h2>
+</div>
+<div class="ring" id="ring">
+<button class="chip" style="--k:0"><b>١</b>نیشانە گرنگەکان</button>
+<button class="chip" style="--k:1"><b>٢</b>چارەسەری برین</button>
+<button class="chip" style="--k:2"><b>٣</b>دەرمان‌دانی سەلامەت</button>
+<button class="chip" style="--k:3"><b>٤</b>فریاکەوتنی یەکەم</button>
+<button class="chip" style="--k:4"><b>٥</b>پشتیوانی دەروونی</button>
+<button class="chip" style="--k:5"><b>٦</b>ئامۆژگاریی تەندروستی</button>
+</div></div>
+
+<div class="scene"><div class="card sm">
+<p class="k">٠٣ — زانیاری</p>
+<h2>نیشانە <em>گرنگەکانی ژیان</em></h2>
+<p>پەرستار لە هەموو ڕاوێژێکدا ئەمانە دەپێوێت. ئەمانە ژمارەی ئاساییی گەورەسالانن لە حاڵەتی پشوودا:</p>
+<div class="grid">
+<div class="tile it" style="--n:0"><b>٦٠–١٠٠</b><span>لێدانی دڵ لە خولەکێکدا</span></div>
+<div class="tile it" style="--n:1"><b>١٢٠/٨٠</b><span>پەستانی خوێن (mmHg) — ئاسایی کەمتر لەمەیە</span></div>
+<div class="tile it" style="--n:2"><b>٣٦.١–٣٧.٢°</b><span>پلەی گەرمیی لەش (سیلزی)</span></div>
+<div class="tile it" style="--n:3"><b>١٢–٢٠</b><span>هەناسەدان لە خولەکێکدا</span></div>
+<div class="tile it" style="--n:4"><b>٩٥–١٠٠٪</b><span>ئۆکسجینی خوێن (SpO₂)</span></div>
+<div class="tile it" style="--n:5"><b>٠–١٠</b><span>پێوانەی ئازار</span></div>
+</div>
+<p style="font-size:.78rem;margin:8px 0 0">زانیاریی گشتییە و جێگەی ڕاوێژی پزیشک ناگرێتەوە.</p>
+</div></div>
+
+<div class="scene alt"><div class="card sm">
+<p class="k">٠٤ — بەشەکان</p>
+<h2>پەرستار لە <em>هەموو شوێنێکدایە</em></h2>
+<div class="grid">
+<div class="tile it" style="--n:0"><b>فریاکەوتن</b><span>ڕووبەڕووبوونەوەی حاڵەتی لەناکاو</span></div>
+<div class="tile it" style="--n:1"><b>چاودێری چڕ</b><span>چاودێریی بەردەوامی نەخۆشی ناسک</span></div>
+<div class="tile it" style="--n:2"><b>منداڵان</b><span>ساوا و منداڵ و هەرزەکار</span></div>
+<div class="tile it" style="--n:3"><b>دایکایەتی</b><span>پشتیوانیی دایک پێش و دوای منداڵبوون</span></div>
+<div class="tile it" style="--n:4"><b>نەشتەرگەری</b><span>ئامادەکردن و چاودێری دوای نەشتەرگەری</span></div>
+<div class="tile it" style="--n:5"><b>تەندروستیی کۆمەڵگە</b><span>ڤاکسین و ئاگادارکردنەوە لە گەڕەک و گوند</span></div>
+</div>
+</div></div>
+
+<div class="scene"><div class="card sm">
+<p class="k">٠٥ — ئاسایشی نەخۆش</p>
+<h2>پێنج کاتی <em>شوشتنی دەست</em></h2>
+<ol class="steps">
+<li class="it" style="--n:0"><i>١</i>پێش دەستلێدانی نەخۆش</li>
+<li class="it" style="--n:1"><i>٢</i>پێش کاری پاک و بێمیکرۆب</li>
+<li class="it" style="--n:2"><i>٣</i>دوای مەترسیی تەڕبوون بە شلەی لەش</li>
+<li class="it" style="--n:3"><i>٤</i>دوای دەستلێدانی نەخۆش</li>
+<li class="it" style="--n:4"><i>٥</i>دوای دەستلێدانی ژینگەی دەوروبەری نەخۆش</li>
+</ol>
+<p style="font-size:.8rem;margin:0">بەپێی ڕێنماییی ڕێکخراوی تەندروستیی جیهانی (WHO)؛ سادەترین ڕێگەیە بۆ ڕێگریی لە گواستنەوەی میکرۆب.</p>
+</div></div>
+
+<div class="scene alt"><div class="card sm">
+<p class="k">٠٦ — ڕێگا</p>
+<h2>چۆن <em>دەبیت بە پەرستار؟</em></h2>
+<ol class="steps">
+<li class="it" style="--n:0"><i>١</i>تەواوکردنی خوێندنی ئامادەیی</li>
+<li class="it" style="--n:1"><i>٢</i>خوێندنی پەرستاری لە پەیمانگا یان کۆلێژ</li>
+<li class="it" style="--n:2"><i>٣</i>ڕاهێنانی کرداری لە نەخۆشخانە</li>
+<li class="it" style="--n:3"><i>٤</i>وەرگرتنی مۆڵەتی کارکردن لە وڵاتەکەت</li>
+<li class="it" style="--n:4"><i>٥</i>فێربوونی بەردەوام و پسپۆڕیی زیاتر</li>
+</ol>
+<p style="font-size:.8rem;margin:0">مەرجەکان لە وڵاتێکەوە بۆ وڵاتێکی تر جیاوازن.</p>
+</div></div>
+
+<div class="scene end"><div class="card">
+<p class="k">٠٧ — بەشداربە</p>
+<h2>ئەو دەستە <em>تۆ بیت</em></h2>
+<p>فێربوون، ڕاهێنان و خزمەتکردن — هەموو شتێک بە یەک هەنگاو دەست پێدەکات.</p>
+<div class="row"><button class="btn" id="start" data-i="0">دەستپێکردن</button><button class="btn ghost" data-i="3">زانیاری زیاتر</button></div>
+</div></div>
+</div>
+<div class="track"></div>
+
+<svg class="ecg" viewBox="0 -10 1000 52" preserveAspectRatio="none" aria-hidden="true"><path class="bg" id="e1" pathLength="1000"/><path class="fg" id="e2" pathLength="1000"/></svg>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){var d='M0 24';for(var i=0;i<8;i++){var x=i*125;d+=' H'+(x+45)+' l8 -6 l8 6 H'+(x+75)+' l6 4 l8 -34 l8 44 l6 -14 H'+(x+112)+' l6 -8 l7 8'}
+document.getElementById('e1').setAttribute('d',d);document.getElementById('e2').setAttribute('d',d)})();
+var boost=0,Q$=function(q){return [].slice.call(document.querySelectorAll(q))};
+var cards=Q$('.scene').map(function(e){return e.querySelector('.card')}),ring=document.getElementById('ring'),chips=Q$('#ring .chip'),dotsEl=document.getElementById('dots');
+for(var di=0;di<8;di++){var b=document.createElement('button');b.dataset.i=di;b.setAttribute('aria-label',di+1);dotsEl.appendChild(b)}
+var navB=Q$('nav button,.dots button');
+document.addEventListener('click',function(e){var b=e.target.closest('[data-i]');if(b){if(b.id==='start')boost=1;scrollTo({top:+b.dataset.i*1.3*innerHeight,behavior:'smooth'})}if(e.target.closest('.chip'))boost=1});
+function place(el,d){var a=Math.abs(d),o=Math.max(0,1-a*1.7);el.style.opacity=o;el.style.visibility=o>.01?'visible':'hidden';el.classList.toggle('act',a<.45);el.style.pointerEvents=a<.4?'auto':'none';
+el.style.transform='rotateY('+(d*-55)+'deg) rotateX('+(d*28)+'deg) translate3d('+(d*-90)+'px,'+(d*50)+'px,'+(-a*650)+'px)'}
+
+(function(){
+var cv=document.getElementById('gl'),R;
+try{R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true})}catch(e){cv.remove();return}
+R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.15;
+var SC=new THREE.Scene(),cam=new THREE.PerspectiveCamera(40,1,.1,50);cam.position.z=7;
+var V=function(x,y,z){return new THREE.Vector3(x,y,z)};
+var rose=new THREE.MeshStandardMaterial({color:0xff9d94,roughness:.38,metalness:.05});
+var steel=new THREE.MeshPhongMaterial({color:0xe4eef0,specular:0xffffff,shininess:100});
+// stethoscope
+var G=new THREE.Group(),S=new THREE.Group();G.add(S);S.position.y=-.35;SC.add(G);
+function tube(p){return new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(p),90,.065,14),rose)}
+S.add(tube([V(.1,-1.25,0),V(1,-.95,.3),V(.8,-.2,.2),V(0,.3,0)]));
+S.add(tube([V(0,.3,0),V(-.9,.8,0),V(-1.15,1.6,0),V(-.5,2.1,0)]));
+S.add(tube([V(0,.3,0),V(.9,.8,0),V(1.15,1.6,0),V(.5,2.1,0)]));
+[-1,1].forEach(function(k){var e=new THREE.Mesh(new THREE.SphereGeometry(.1,24,24),steel);e.position.set(k*.46,2.13,0);S.add(e)});
+var j=new THREE.Mesh(new THREE.SphereGeometry(.12,24,24),steel);j.position.set(0,.3,0);S.add(j);
+var C=new THREE.Group();C.position.set(.1,-1.5,0);S.add(C);
+var disc=new THREE.Mesh(new THREE.CylinderGeometry(.46,.46,.16,56),steel);disc.rotation.x=Math.PI/2;C.add(disc);
+C.add(new THREE.Mesh(new THREE.TorusGeometry(.46,.05,16,56),steel));
+var face=new THREE.Mesh(new THREE.CircleGeometry(.34,48),new THREE.MeshStandardMaterial({color:0xff9d94,roughness:.5}));face.position.z=.09;C.add(face);
+var rings=[0,1].map(function(){var m=new THREE.MeshBasicMaterial({color:0xff9d94,transparent:true,opacity:0,depthWrite:false});var r=new THREE.Mesh(new THREE.TorusGeometry(.5,.012,8,80),m);C.add(r);return r});
+// heart
+var hs=new THREE.Shape();hs.moveTo(.5,.5);hs.bezierCurveTo(.5,.5,.4,0,0,0);hs.bezierCurveTo(-.6,0,-.6,.7,-.6,.7);hs.bezierCurveTo(-.6,1.1,-.3,1.54,.5,1.9);hs.bezierCurveTo(1.2,1.54,1.6,1.1,1.6,.7);hs.bezierCurveTo(1.6,.7,1.6,0,1,0);hs.bezierCurveTo(.7,0,.5,.5,.5,.5);
+var hg=new THREE.ExtrudeGeometry(hs,{depth:.55,bevelEnabled:true,bevelThickness:.25,bevelSize:.22,bevelSegments:10,curveSegments:40});hg.center();hg.rotateZ(Math.PI);
+var H=new THREE.Mesh(hg,new THREE.MeshPhysicalMaterial({color:0xff6f78,roughness:.28,metalness:.05,clearcoat:1,clearcoatRoughness:.15}));SC.add(H);
+// light
+SC.add(new THREE.AmbientLight(0x9fd8d0,.7));
+var dl=new THREE.DirectionalLight(0xffffff,1.2);dl.position.set(3,4,5);SC.add(dl);
+var p1=new THREE.PointLight(0xff9d94,1.4,20);p1.position.set(-4,-1,4);SC.add(p1);
+var p2=new THREE.PointLight(0x40e0d0,1.2,20);p2.position.set(4,2,-3);SC.add(p2);
+var N=140,pos=new Float32Array(N*3),sp=[];
+for(var i=0;i<N;i++){pos.set([(Math.random()-.5)*14,(Math.random()-.5)*10,(Math.random()-.5)*6-1],i*3);sp.push(.004+Math.random()*.01)}
+var bg=new THREE.BufferGeometry();bg.setAttribute('position',new THREE.BufferAttribute(pos,3));
+SC.add(new THREE.Points(bg,new THREE.PointsMaterial({size:.06,color:0xcffff6,transparent:true,opacity:.55,depthWrite:false})));
+
+function rs(){R.setPixelRatio(Math.min(devicePixelRatio,2));R.setSize(innerWidth,innerHeight,false);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix()}
+addEventListener('resize',rs);rs();
+var cur=0,target=0,mx=0,my=0,last=-1,rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function onS(){target=Math.min(Math.max(scrollY/(1.3*innerHeight),0),7)}
+addEventListener('scroll',onS,{passive:true});onS();
+addEventListener('pointermove',function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5},{passive:true});
+var lerp=function(a,b,t){return a+(b-a)*t},sm=function(t){return t*t*(3-2*t)};
+function kf(a,s){var i=Math.min(Math.floor(s),a.length-2),t=sm(Math.min(Math.max(s-i,0),1));return lerp(a[i],a[i+1],t)}
+function tick(t){
+ t*=.001;cur+=(target-cur)*(rm?1:.08);var s=cur,nr=innerWidth/innerHeight<.85,Q=function(a,b){return kf(nr?b:a,s)};
+ var ss=kf([1,0,0,0,0,0,0,.8],s);G.visible=ss>.01;G.scale.setScalar(Math.max(ss,.001)*(nr?.6:1));
+ G.position.set(Q([-1.7,-4.5,-4.5,-4.5,-4.5,-4.5,-4.5,0],[0,-3,-3,-3,-3,-3,-3,0])+mx*.35,Q([0,.6,.6,.6,.6,.6,.6,.9],[1.05,1.05,1.05,1.05,1.05,1.05,1.05,1.1])+Math.sin(t*.8)*.08-my*.2,0);
+ G.rotation.set(my*.25+Math.sin(t*.6)*.05,s*.9+mx*.6,0);
+ boost*=.94;
+ var ph=(t*(1.25+boost*1.2))%1,beat=ph<.16?Math.sin(ph/.16*Math.PI):0;
+ C.scale.setScalar(1+beat*.1+boost*.2);
+ rings.forEach(function(r,k){var q=(ph+k*.5)%1;r.scale.setScalar(1+q*2.4);r.material.opacity=.55*(1-q)});
+ var h=kf([0,1,.62,.6,.6,.6,.6,.55],s);H.visible=h>.01;H.scale.setScalar(Math.max(h,.001)*.85*(nr?.6:1)*(1+beat*.08+boost*.15));
+ H.position.set(Q([3,1.7,0,-1.9,1.9,-1.9,1.9,0],[0,0,0,0,0,0,0,0])+mx*.25,Q([0,0,.5,.1,.1,.1,.1,.45],[1.05,1.05,.8,1.05,1.05,1.05,1.05,.9])+Math.sin(t)*.05,kf([0,0,0,0,0,0,0,1.4],s));
+ H.rotation.set(0,s*1.4+mx*.5+Math.sin(t*.7)*.15,0);
+ // 3D overlays
+ cards.forEach(function(c,i){place(c,s-i)});
+ var d2=s-2,w=Math.max(0,1-Math.abs(d2)*1.5),ang=d2*-140;
+ ring.style.transform='translateZ('+(-(1-w)*900)+'px) rotateX(-10deg) rotateY('+ang+'deg)';
+ chips.forEach(function(c,k){var f=(Math.cos((k*60+ang)*Math.PI/180)+1)/2;c.style.opacity=w*(.25+.75*f);c.style.pointerEvents=w>.5?'auto':'none'});
+ var a=Math.round(s);if(a!==last){last=a;navB.forEach(function(b){b.classList.toggle('on',a>=+b.dataset.i&&a<=+(b.dataset.e||b.dataset.i))})}
+ for(var i=0;i<N;i++){if(!rm)pos[i*3+1]+=sp[i];pos[i*3]+=Math.sin(t+i)*.0015*(rm?0:1);if(pos[i*3+1]>5)pos[i*3+1]=-5}bg.attributes.position.needsUpdate=true;
+ R.render(SC,cam);requestAnimationFrame(tick)
+}
+requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
