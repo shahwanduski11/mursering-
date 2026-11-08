@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ckb" dir="rtl">
+<html lang="kmr-Arab" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>دڵسۆز — پەرستاری</title>
+<title>دلۆڤان — پەرستاری</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@500;700&family=Noto+Sans+Arabic:wght@400;600&display=swap">
 <style>
 :root{--bg1:#dff4ef;--bg2:#a9ddd5;--bg3:#f9cfc9;--ink:#06302f;--muted:#2e5f5c;--accent:#d8473f;--on:#fff;--glass:rgba(255,255,255,.55);--card2:rgba(255,255,255,.84);--gb:rgba(6,48,47,.14);--pill:rgba(255,255,255,.72);
@@ -47,6 +47,10 @@ p{margin:0 0 18px;color:var(--muted);font-size:1.02rem}
 .ring .chip{position:absolute;left:calc(var(--w) / -2);top:-28px;width:var(--w);height:56px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-size:.92rem;color:var(--ink);background:var(--card2);border:1px solid var(--gb);border-radius:16px;cursor:pointer;backface-visibility:hidden;-webkit-backface-visibility:hidden;opacity:0;pointer-events:auto;transform:rotateY(calc(var(--k) * 60deg)) translateZ(var(--R))}
 .ring .chip:hover{transform:rotateY(calc(var(--k) * 60deg)) translateZ(calc(var(--R) + 16px))}
 .chip b{color:var(--accent)}
+.snd{position:fixed;z-index:6;top:calc(env(safe-area-inset-top,0px) + 62px);inset-inline-end:10px;font:600 13px 'Noto Sans Arabic',Tahoma,sans-serif;color:var(--ink);background:var(--pill);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--gb);border-radius:999px;padding:7px 14px;cursor:pointer}
+.snd.on{background:var(--accent);color:var(--on)}
+.snd:not(.on){animation:sndp 2.2s infinite}
+@keyframes sndp{50%{box-shadow:0 0 0 8px rgba(255,157,148,.28)}}
 .card{perspective:900px}
 .card.sm{padding:clamp(18px,2.4vw,30px)}
 .sm h2{font-size:clamp(1.5rem,3.2vw,2.3rem)}
@@ -73,96 +77,97 @@ p{margin:0 0 18px;color:var(--muted);font-size:1.02rem}
 <body>
 <div class="sea"></div>
 <canvas id="gl"></canvas>
-<div class="logo">دڵسۆز<small>پەرستاری</small></div>
-<nav><button data-i="0">سەرەکی</button><button data-i="1">چاودێری</button><button data-i="2">شارەزایی</button><button data-i="3" data-e="6">زانیاری</button><button data-i="7">بەشداربە</button></nav>
+<div class="logo">دلۆڤان<small>پەرستاری</small></div>
+<nav><button data-i="0">سەرەکی</button><button data-i="1">چاڤدێری</button><button data-i="2">شارەزایی</button><button data-i="3" data-e="6">زانیاری</button><button data-i="7">بەشدار ببە</button></nav>
 <div class="dots" id="dots"></div>
+<button class="snd" id="snd" aria-label="دەنگ">🔇 دەنگ ڤەکە</button>
 
 <div class="stage">
 <div class="scene"><div class="card">
-<p class="k">پەرستاری — ئەزموونێکی سێ‌ڕەهەند</p>
-<h1>چاودێری<br>بە <em>دڵسۆزی</em></h1>
-<p>لە یەکەم پشکنینەوە تا ساڕێژبوون، پەرستار ئەو دەستەیە کە هەمیشە ئامادەیە. سکرۆڵ بکە — هەر بەشێک لە قووڵاییەوە دەردەکەوێت.</p>
-<button class="btn" data-i="1">دەستپێبکە ↓</button>
+<p class="k">پەرستاری — ئەزموونا سێ‌ڕەهەندی</p>
+<h1>چاڤدێری<br>ب <em>دلۆڤانی</em></h1>
+<p>ژ پشکنینا ئێکێ هەتا ساخبوونێ، پەرستار هەردەم ئامادەیە. سکرۆل بکە — هەر بەشەک ژ قووڵاییێ دێ دیار ببیت.</p>
+<button class="btn" data-i="1">دەست پێ بکە ↓</button>
 </div></div>
 
 <div class="scene alt"><div class="card">
-<p class="k">٠١ — چاودێری</p>
-<h2>گوێ بگرە لە <em>لێدانی دڵ</em></h2>
-<p>هەموو نەخۆشێک چیرۆکێکی هەیە، و پەرستار یەکەم کەسە کە بە ئارامی گوێی لێ دەگرێت. ستێسکۆپ تەنها ئامێر نییە؛ نیشانەی متمانەیە.</p>
+<p class="k">٠١ — چاڤدێری</p>
+<h2>گوه بدە <em>لێدانا دلێ</em></h2>
+<p>هەر نەخۆشەک چیرۆکەک هەیە، و پەرستار ئێکەم کەسە یێ ب ئارامی گوه لێ دگریت. ستێسکۆپ تەنێ ئامێر نینە؛ ئەو نیشانا باوەرییێیە.</p>
 </div></div>
 
 <div class="scene mid"><div class="card">
 <p class="k" style="margin:0">٠٢ — شارەزایی</p>
-<h2>هێز لە <em>وردەکاریدایە</em></h2>
+<h2>هێز د <em>وردەکاریێ دایە</em></h2>
 </div>
 <div class="ring" id="ring">
-<button class="chip" style="--k:0"><b>١</b>نیشانە گرنگەکان</button>
-<button class="chip" style="--k:1"><b>٢</b>چارەسەری برین</button>
-<button class="chip" style="--k:2"><b>٣</b>دەرمان‌دانی سەلامەت</button>
-<button class="chip" style="--k:3"><b>٤</b>فریاکەوتنی یەکەم</button>
-<button class="chip" style="--k:4"><b>٥</b>پشتیوانی دەروونی</button>
-<button class="chip" style="--k:5"><b>٦</b>ئامۆژگاریی تەندروستی</button>
+<button class="chip" style="--k:0"><b>١</b>نیشانێن گرنگ</button>
+<button class="chip" style="--k:1"><b>٢</b>چارەسەریا برینێ</button>
+<button class="chip" style="--k:2"><b>٣</b>دانا دەرمانی</button>
+<button class="chip" style="--k:3"><b>٤</b>فریاکەتنا ئێکێ</button>
+<button class="chip" style="--k:4"><b>٥</b>پشتگیریا دەروونی</button>
+<button class="chip" style="--k:5"><b>٦</b>ئامۆژگاریا تەندروستیێ</button>
 </div></div>
 
 <div class="scene"><div class="card sm">
 <p class="k">٠٣ — زانیاری</p>
-<h2>نیشانە <em>گرنگەکانی ژیان</em></h2>
-<p>پەرستار لە هەموو ڕاوێژێکدا ئەمانە دەپێوێت. ئەمانە ژمارەی ئاساییی گەورەسالانن لە حاڵەتی پشوودا:</p>
+<h2>نیشانێن <em>گرنگ یێن ژیانێ</em></h2>
+<p>پەرستار هەر جارەک ئەڤان دپێڤیت. ئەڤە ژمارێن ئاسایینە بۆ مەزنان د دۆخێ پشوویێ دا:</p>
 <div class="grid">
-<div class="tile it" style="--n:0"><b>٦٠–١٠٠</b><span>لێدانی دڵ لە خولەکێکدا</span></div>
-<div class="tile it" style="--n:1"><b>١٢٠/٨٠</b><span>پەستانی خوێن (mmHg) — ئاسایی کەمتر لەمەیە</span></div>
-<div class="tile it" style="--n:2"><b>٣٦.١–٣٧.٢°</b><span>پلەی گەرمیی لەش (سیلزی)</span></div>
-<div class="tile it" style="--n:3"><b>١٢–٢٠</b><span>هەناسەدان لە خولەکێکدا</span></div>
-<div class="tile it" style="--n:4"><b>٩٥–١٠٠٪</b><span>ئۆکسجینی خوێن (SpO₂)</span></div>
-<div class="tile it" style="--n:5"><b>٠–١٠</b><span>پێوانەی ئازار</span></div>
+<div class="tile it" style="--n:0"><b>٦٠–١٠٠</b><span>لێدانێن دلی د خولەکێ دا</span></div>
+<div class="tile it" style="--n:1"><b>١٢٠/٨٠</b><span>پەستانا خوینێ (mmHg) — ئاسایی ژ ڤێ کێمترە</span></div>
+<div class="tile it" style="--n:2"><b>٣٦.١–٣٧.٢°</b><span>پلا گەرمیا لەشی (سیلزی)</span></div>
+<div class="tile it" style="--n:3"><b>١٢–٢٠</b><span>هەناسەدان د خولەکێ دا</span></div>
+<div class="tile it" style="--n:4"><b>٩٥–١٠٠٪</b><span>ئۆکسجینا خوینێ (SpO₂)</span></div>
+<div class="tile it" style="--n:5"><b>٠–١٠</b><span>پێڤانا ئێشێ</span></div>
 </div>
-<p style="font-size:.78rem;margin:8px 0 0">زانیاریی گشتییە و جێگەی ڕاوێژی پزیشک ناگرێتەوە.</p>
+<p style="font-size:.78rem;margin:8px 0 0">ئەڤە زانیاریێن گشتینە و جهێ ڕاوێژا پزیشکی ناگریت.</p>
 </div></div>
 
 <div class="scene alt"><div class="card sm">
-<p class="k">٠٤ — بەشەکان</p>
-<h2>پەرستار لە <em>هەموو شوێنێکدایە</em></h2>
+<p class="k">٠٤ — بەش</p>
+<h2>پەرستار د <em>هەمی جهان دایە</em></h2>
 <div class="grid">
-<div class="tile it" style="--n:0"><b>فریاکەوتن</b><span>ڕووبەڕووبوونەوەی حاڵەتی لەناکاو</span></div>
-<div class="tile it" style="--n:1"><b>چاودێری چڕ</b><span>چاودێریی بەردەوامی نەخۆشی ناسک</span></div>
-<div class="tile it" style="--n:2"><b>منداڵان</b><span>ساوا و منداڵ و هەرزەکار</span></div>
-<div class="tile it" style="--n:3"><b>دایکایەتی</b><span>پشتیوانیی دایک پێش و دوای منداڵبوون</span></div>
-<div class="tile it" style="--n:4"><b>نەشتەرگەری</b><span>ئامادەکردن و چاودێری دوای نەشتەرگەری</span></div>
-<div class="tile it" style="--n:5"><b>تەندروستیی کۆمەڵگە</b><span>ڤاکسین و ئاگادارکردنەوە لە گەڕەک و گوند</span></div>
+<div class="tile it" style="--n:0"><b>فریاکەتن</b><span>چارەسەریا ب لەز بۆ دۆخێن ترسناک</span></div>
+<div class="tile it" style="--n:1"><b>چاڤدێریا توند</b><span>چاڤدێریا بەردەوام بۆ نەخۆشێن گران</span></div>
+<div class="tile it" style="--n:2"><b>چاڤدێریا زارۆکان</b><span>ساوا، زارۆک و هەرزەکار</span></div>
+<div class="tile it" style="--n:3"><b>دایکبوون</b><span>پشتگیریا دایکێ بەری و پشتی زارۆکبوونێ</span></div>
+<div class="tile it" style="--n:4"><b>نەشتەرگەری</b><span>ئامادەکرن و چاڤدێریا پشتی نەشتەرگەرییێ</span></div>
+<div class="tile it" style="--n:5"><b>تەندروستیا جڤاکی</b><span>ڤاکسین و ئاگەهدارکرن ل گەڕەک و گوندان</span></div>
 </div>
 </div></div>
 
 <div class="scene"><div class="card sm">
-<p class="k">٠٥ — ئاسایشی نەخۆش</p>
-<h2>پێنج کاتی <em>شوشتنی دەست</em></h2>
+<p class="k">٠٥ — سەلامەتیا نەخۆشی</p>
+<h2>پێنج دەمێن <em>شووشتنا دەستان</em></h2>
 <ol class="steps">
-<li class="it" style="--n:0"><i>١</i>پێش دەستلێدانی نەخۆش</li>
-<li class="it" style="--n:1"><i>٢</i>پێش کاری پاک و بێمیکرۆب</li>
-<li class="it" style="--n:2"><i>٣</i>دوای مەترسیی تەڕبوون بە شلەی لەش</li>
-<li class="it" style="--n:3"><i>٤</i>دوای دەستلێدانی نەخۆش</li>
-<li class="it" style="--n:4"><i>٥</i>دوای دەستلێدانی ژینگەی دەوروبەری نەخۆش</li>
+<li class="it" style="--n:0"><i>١</i>بەری دەستلێدانا نەخۆشی</li>
+<li class="it" style="--n:1"><i>٢</i>بەری کارەکێ پاقژ و بێمیکرۆب</li>
+<li class="it" style="--n:2"><i>٣</i>پشتی مەترسیا تێکەلبوونا ب شلەمەنیێن لەشی</li>
+<li class="it" style="--n:3"><i>٤</i>پشتی دەستلێدانا نەخۆشی</li>
+<li class="it" style="--n:4"><i>٥</i>پشتی دەستلێدانا دەوروبەرێ نەخۆشی</li>
 </ol>
-<p style="font-size:.8rem;margin:0">بەپێی ڕێنماییی ڕێکخراوی تەندروستیی جیهانی (WHO)؛ سادەترین ڕێگەیە بۆ ڕێگریی لە گواستنەوەی میکرۆب.</p>
+<p style="font-size:.8rem;margin:0">ب ڕێنمایا ڕێکخراوا تەندروستیا جیهانێ (WHO)؛ ئەڤە ساناهیترین ڕێکە بۆ ڕێگرتن ل بەلاڤبوونا مێکرۆبان.</p>
 </div></div>
 
 <div class="scene alt"><div class="card sm">
-<p class="k">٠٦ — ڕێگا</p>
-<h2>چۆن <em>دەبیت بە پەرستار؟</em></h2>
+<p class="k">٠٦ — ڕێ</p>
+<h2>چاوا <em>دێ ببی پەرستار؟</em></h2>
 <ol class="steps">
-<li class="it" style="--n:0"><i>١</i>تەواوکردنی خوێندنی ئامادەیی</li>
-<li class="it" style="--n:1"><i>٢</i>خوێندنی پەرستاری لە پەیمانگا یان کۆلێژ</li>
-<li class="it" style="--n:2"><i>٣</i>ڕاهێنانی کرداری لە نەخۆشخانە</li>
-<li class="it" style="--n:3"><i>٤</i>وەرگرتنی مۆڵەتی کارکردن لە وڵاتەکەت</li>
-<li class="it" style="--n:4"><i>٥</i>فێربوونی بەردەوام و پسپۆڕیی زیاتر</li>
+<li class="it" style="--n:0"><i>١</i>تەمامکرنا خواندنا ئامادەیی</li>
+<li class="it" style="--n:1"><i>٢</i>خواندنا پەرستاریێ د پەیمانگەهێ یان کۆلێژێ دا</li>
+<li class="it" style="--n:2"><i>٣</i>ڕاهێنانا کریاری ل نەخۆشخانەیێ</li>
+<li class="it" style="--n:3"><i>٤</i>وەرگرتنا مۆڵەتا کارکرنێ ل وەلاتێ خۆ</li>
+<li class="it" style="--n:4"><i>٥</i>فێربوونا بەردەوام و پسپۆڕیا زێدەتر</li>
 </ol>
-<p style="font-size:.8rem;margin:0">مەرجەکان لە وڵاتێکەوە بۆ وڵاتێکی تر جیاوازن.</p>
+<p style="font-size:.8rem;margin:0">مەرجێن کارکرنێ ژ وەلاتەکی بۆ وەلاتەکێ دی جیاوازن.</p>
 </div></div>
 
 <div class="scene end"><div class="card">
-<p class="k">٠٧ — بەشداربە</p>
-<h2>ئەو دەستە <em>تۆ بیت</em></h2>
-<p>فێربوون، ڕاهێنان و خزمەتکردن — هەموو شتێک بە یەک هەنگاو دەست پێدەکات.</p>
-<div class="row"><button class="btn" id="start" data-i="0">دەستپێکردن</button><button class="btn ghost" data-i="3">زانیاری زیاتر</button></div>
+<p class="k">٠٧ — بەشدار ببە</p>
+<h2>ئەو دەست <em>تو بە</em></h2>
+<p>فێربوون، ڕاهێنان و خزمەتکرن — هەمی تشت ب ئێک هەنگاڤ دەست پێ دکەت.</p>
+<div class="row"><button class="btn" id="start" data-i="0">دەست پێ بکە</button><button class="btn ghost" data-i="3">زانیاریێن زێدەتر</button></div>
 </div></div>
 </div>
 <div class="track"></div>
@@ -177,7 +182,40 @@ var boost=0,Q$=function(q){return [].slice.call(document.querySelectorAll(q))};
 var cards=Q$('.scene').map(function(e){return e.querySelector('.card')}),ring=document.getElementById('ring'),chips=Q$('#ring .chip'),dotsEl=document.getElementById('dots');
 for(var di=0;di<8;di++){var b=document.createElement('button');b.dataset.i=di;b.setAttribute('aria-label',di+1);dotsEl.appendChild(b)}
 var navB=Q$('nav button,.dots button');
-document.addEventListener('click',function(e){var b=e.target.closest('[data-i]');if(b){if(b.id==='start')boost=1;scrollTo({top:+b.dataset.i*1.3*innerHeight,behavior:'smooth'})}if(e.target.closest('.chip'))boost=1});
+document.addEventListener('click',function(e){var b=e.target.closest('[data-i]');if(b){if(b.id==='start')boost=1;SND.tick();scrollTo({top:+b.dataset.i*1.3*innerHeight,behavior:'smooth'})}if(e.target.closest('.chip')){boost=1;SND.pop()}});
+var SND=(function(){
+var C,M,nb,pad=[],on=0,sc=0,btn=document.getElementById('snd');
+var CH=[[147,220,277],[110,165,220],[165,247,330],[131,196,262],[147,220,294],[175,262,349],[131,196,330],[131,196,262]];
+function init(){C=new(window.AudioContext||window.webkitAudioContext)();M=C.createGain();M.gain.value=0;var k=C.createDynamicsCompressor();M.connect(k);k.connect(C.destination);
+ nb=C.createBuffer(1,C.sampleRate,C.sampleRate);var d=nb.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=Math.random()*2-1;
+ var lp=C.createBiquadFilter();lp.type='lowpass';lp.frequency.value=700;var pg=C.createGain();pg.gain.value=.05;lp.connect(pg);pg.connect(M);
+ for(var j=0;j<3;j++){var o=C.createOscillator();o.type='sine';o.frequency.value=CH[0][j];o.detune.value=j*4;o.connect(lp);o.start();pad.push(o)}}
+function T(){return C.currentTime}
+function tone(f,t,d,ty,g,f2){var o=C.createOscillator(),e=C.createGain();o.type=ty;o.frequency.setValueAtTime(f,t);if(f2)o.frequency.exponentialRampToValueAtTime(f2,t+d);e.gain.setValueAtTime(.0001,t);e.gain.exponentialRampToValueAtTime(g,t+.012);e.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(e);e.connect(M);o.start(t);o.stop(t+d+.03)}
+function noise(t,d,f1,f2,g,q){var s=C.createBufferSource(),b=C.createBiquadFilter(),e=C.createGain();s.buffer=nb;s.loop=true;b.type='bandpass';b.Q.value=q||1;b.frequency.setValueAtTime(f1,t);b.frequency.exponentialRampToValueAtTime(f2,t+d);e.gain.setValueAtTime(.0001,t);e.gain.exponentialRampToValueAtTime(g,t+d*.3);e.gain.exponentialRampToValueAtTime(.0001,t+d);s.connect(b);b.connect(e);e.connect(M);s.start(t);s.stop(t+d+.05)}
+function thump(f,t,g,d){tone(f,t,d,'sine',g,f*.5);tone(f*2.6,t,d*.5,'triangle',g*.55,f*1.4)}
+function beat(v){if(!on||v<.05)return;var t=T()+.01;
+ if(sc===3){tone(880,t,.12,'sine',.22*Math.max(v,.5));thump(70,t,.25*v,.14);return}
+ thump(78,t,.95*v,.16);thump(60,t+.17,.7*v,.2)}
+function scene(i){sc=i;if(!on)return;var t=T()+.02;
+ pad.forEach(function(o,k){o.frequency.setTargetAtTime(CH[i][k],t,.7)});
+ noise(t,.6,300,2400,.12,.8);
+ var f=[
+ function(){[0,.12,.26].forEach(function(d,k){tone(380+k*180,t+d,.16,'sine',.2,900+k*200)})},
+ function(){noise(t+.1,.05,1800,900,.5,3);thump(78,t+.3,.9,.16);thump(60,t+.47,.7,.2)},
+ function(){[523,659,784].forEach(function(n,k){tone(n,t+k*.09,.5,'triangle',.18)})},
+ function(){tone(880,t+.1,.12,'sine',.25);tone(880,t+.45,.12,'sine',.25)},
+ function(){tone(659,t+.1,.5,'sine',.22);tone(523,t+.5,.7,'sine',.22)},
+ function(){noise(t,1.6,1500,3200,.35,.6);for(var k=0;k<6;k++)tone(500+Math.random()*500,t+.2+k*.18,.12,'sine',.12,1200)},
+ function(){[262,330,392,494,523].forEach(function(n,k){tone(n,t+.1+k*.08,.35,'triangle',.2)})},
+ function(){[262,330,392,523].forEach(function(n){tone(n,t+.1,1.6,'sine',.12)});thump(78,t+.3,1,.16);thump(60,t+.47,.8,.2)}
+ ];f[i]()}
+function tick(){if(on)tone(1400,T(),.05,'square',.05,700)}
+function pop(){if(on)tone(500,T(),.12,'sine',.3,1100)}
+function toggle(){if(!C)init();if(C.state==='suspended')C.resume();on=!on;M.gain.setTargetAtTime(on?.9:0,T(),.08);btn.classList.toggle('on',on);btn.textContent=on?'🔊 دەنگ':'🔇 دەنگ ڤەکە';if(on)scene(sc)}
+btn.addEventListener('click',toggle);
+document.addEventListener('visibilitychange',function(){if(C){if(document.hidden)C.suspend();else if(on)C.resume()}});
+return{beat:beat,scene:scene,tick:tick,pop:pop}})();
 function place(el,d){var a=Math.abs(d),o=Math.max(0,1-a*1.7);el.style.opacity=o;el.style.visibility=o>.01?'visible':'hidden';el.classList.toggle('act',a<.45);el.style.pointerEvents=a<.4?'auto':'none';
 el.style.transform='rotateY('+(d*-55)+'deg) rotateX('+(d*28)+'deg) translate3d('+(d*-90)+'px,'+(d*50)+'px,'+(-a*650)+'px)'}
 
@@ -218,7 +256,7 @@ SC.add(new THREE.Points(bg,new THREE.PointsMaterial({size:.06,color:0xcffff6,tra
 
 function rs(){R.setPixelRatio(Math.min(devicePixelRatio,2));R.setSize(innerWidth,innerHeight,false);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix()}
 addEventListener('resize',rs);rs();
-var cur=0,target=0,mx=0,my=0,last=-1,rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var wasB=false,lastRk=0,cur=0,target=0,mx=0,my=0,last=-1,rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function onS(){target=Math.min(Math.max(scrollY/(1.3*innerHeight),0),7)}
 addEventListener('scroll',onS,{passive:true});onS();
 addEventListener('pointermove',function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5},{passive:true});
@@ -233,15 +271,15 @@ function tick(t){
  var ph=(t*(1.25+boost*1.2))%1,beat=ph<.16?Math.sin(ph/.16*Math.PI):0;
  C.scale.setScalar(1+beat*.1+boost*.2);
  rings.forEach(function(r,k){var q=(ph+k*.5)%1;r.scale.setScalar(1+q*2.4);r.material.opacity=.55*(1-q)});
- var h=kf([0,1,.62,.6,.6,.6,.6,.55],s);H.visible=h>.01;H.scale.setScalar(Math.max(h,.001)*.85*(nr?.6:1)*(1+beat*.08+boost*.15));
+ var h=kf([0,1,.62,.6,.6,.6,.6,.55],s);var inB=ph<.16;if(inB&&!wasB)SND.beat(Math.min(1,h+ss*.5));wasB=inB;H.visible=h>.01;H.scale.setScalar(Math.max(h,.001)*.85*(nr?.6:1)*(1+beat*.08+boost*.15));
  H.position.set(Q([3,1.7,0,-1.9,1.9,-1.9,1.9,0],[0,0,0,0,0,0,0,0])+mx*.25,Q([0,0,.5,.1,.1,.1,.1,.45],[1.05,1.05,.8,1.05,1.05,1.05,1.05,.9])+Math.sin(t)*.05,kf([0,0,0,0,0,0,0,1.4],s));
  H.rotation.set(0,s*1.4+mx*.5+Math.sin(t*.7)*.15,0);
  // 3D overlays
  cards.forEach(function(c,i){place(c,s-i)});
  var d2=s-2,w=Math.max(0,1-Math.abs(d2)*1.5),ang=d2*-140;
- ring.style.transform='translateZ('+(-(1-w)*900)+'px) rotateX(-10deg) rotateY('+ang+'deg)';
+ ring.style.transform='translateZ('+(-(1-w)*900)+'px) rotateX(-10deg) rotateY('+ang+'deg)';var rk=Math.floor(ang/60);if(rk!==lastRk&&w>.5)SND.tick();lastRk=rk;
  chips.forEach(function(c,k){var f=(Math.cos((k*60+ang)*Math.PI/180)+1)/2;c.style.opacity=w*(.25+.75*f);c.style.pointerEvents=w>.5?'auto':'none'});
- var a=Math.round(s);if(a!==last){last=a;navB.forEach(function(b){b.classList.toggle('on',a>=+b.dataset.i&&a<=+(b.dataset.e||b.dataset.i))})}
+ var a=Math.round(s);if(a!==last){last=a;SND.scene(a);navB.forEach(function(b){b.classList.toggle('on',a>=+b.dataset.i&&a<=+(b.dataset.e||b.dataset.i))})}
  for(var i=0;i<N;i++){if(!rm)pos[i*3+1]+=sp[i];pos[i*3]+=Math.sin(t+i)*.0015*(rm?0:1);if(pos[i*3+1]>5)pos[i*3+1]=-5}bg.attributes.position.needsUpdate=true;
  R.render(SC,cam);requestAnimationFrame(tick)
 }
